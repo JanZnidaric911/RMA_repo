@@ -1,0 +1,144 @@
+/* ==========================================================
+   Slog samo za kontakt.html – kontaktni podatki in obrazec
+   ========================================================== */
+
+/* ---------- postavitev: podatki + obrazec (CSS Grid) ---------- */
+.kontakt-postavitev {
+    display: grid;
+    gap: var(--razmik-5);
+    align-items: start;
+}
+
+.kontakt-podatki address {
+    font-style: normal;
+    margin-bottom: var(--razmik-3);
+    line-height: 1.9;
+}
+
+/* ---------- skupine polj ---------- */
+.obrazec fieldset {
+    margin: 0 0 var(--razmik-4);
+    padding: var(--razmik-4);
+    border: 1px solid var(--barva-rob);
+    border-radius: var(--zaobljenost);
+    background: var(--barva-povrsina);
+}
+
+.obrazec legend {
+    padding: 0 var(--razmik-2);
+    font-family: var(--pisava-naslovi);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--barva-primarna-temna);
+}
+
+/* ---------- posamezno polje: oznaka nad vnosom ---------- */
+.polje {
+    display: flex;
+    flex-direction: column;
+    gap: var(--razmik-1);
+    margin-bottom: var(--razmik-3);
+}
+
+.polje:last-child {
+    margin-bottom: 0;
+}
+
+.polje label {
+    font-weight: 600;
+}
+
+.obrazec input[type="text"],
+.obrazec input[type="email"],
+.obrazec input[type="tel"],
+.obrazec select,
+.obrazec textarea {
+    width: 100%;
+    padding: var(--razmik-2) var(--razmik-3);
+    border: 2px solid var(--barva-rob);
+    border-radius: var(--zaobljenost);
+    background: #ffffff;
+    color: var(--barva-besedilo);
+    font: inherit;
+}
+
+.obrazec textarea {
+    resize: vertical;
+    min-height: 8rem;
+}
+
+/* jasno vidno stanje fokusa */
+.obrazec input:focus,
+.obrazec select:focus,
+.obrazec textarea:focus {
+    outline: 3px solid var(--barva-fokus);
+    outline-offset: 1px;
+    border-color: var(--barva-fokus);
+}
+
+/* napačen vnos se pokaže šele, ko ga uporabnik vnese (ne že ob nalaganju strani) */
+.obrazec input:user-invalid,
+.obrazec textarea:user-invalid {
+    border-color: #b3261e;
+}
+
+/* ---------- radijski gumbi in potrditveno polje ---------- */
+.izbira {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--razmik-2);
+    margin-bottom: var(--razmik-2);
+}
+
+.izbira input {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin: 0.2rem 0 0;
+    flex-shrink: 0;
+    accent-color: var(--barva-primarna);
+}
+
+.izbira + .polje {
+    margin-top: var(--razmik-4);
+}
+
+/* ---------- gumbi ---------- */
+.obrazec__gumbi {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--razmik-3);
+}
+
+.obrazec button {
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.gumb--sekundarni {
+    background: transparent;
+    border-color: var(--barva-rob);
+}
+
+.gumb--sekundarni:hover {
+    background: var(--barva-rob);
+}
+
+.obrazec button:focus-visible {
+    outline: 3px solid var(--barva-fokus);
+    outline-offset: 3px;
+}
+
+/* ---------- odzivnost ---------- */
+@media (min-width: 48em) {
+    .obrazec__gumbi button {
+        min-width: 12rem;
+    }
+}
+
+@media (min-width: 64em) {
+    /* podatki levo (ožji stolpec), obrazec desno */
+    .kontakt-postavitev {
+        grid-template-columns: 1fr 2fr;
+    }
+}

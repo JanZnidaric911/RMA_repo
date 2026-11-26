@@ -1,0 +1,125 @@
+/* ==========================================================
+   Slog samo za index.html – uvodno območje, predstavitev, kartice
+   ========================================================== */
+
+/* ---------- uvodno območje (junak) ---------- */
+.junak {
+    background: linear-gradient(135deg, var(--barva-primarna-temna), var(--barva-primarna));
+    color: #ffffff;
+    padding-block: var(--razmik-5);
+}
+
+/* pozdrav z uro (ustvari ga js/pozdrav.js) */
+.pozdrav {
+    display: inline-block;
+    margin-bottom: var(--razmik-3);
+    padding: var(--razmik-1) var(--razmik-3);
+    border-radius: var(--zaobljenost);
+    background: rgba(255, 255, 255, 0.12);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;   /* števke enako široke, da besedilo ne poskakuje */
+}
+
+.junak h1 {
+    color: #ffffff;
+    margin-bottom: var(--razmik-2);
+}
+
+.junak__geslo {
+    font-family: var(--pisava-naslovi);
+    font-size: 1.25rem;
+    font-style: italic;
+    color: var(--barva-sekundarna);
+}
+
+.junak__opis {
+    max-width: 36rem;
+}
+
+.junak__gumbi {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--razmik-3);
+    margin: var(--razmik-4) 0 0;
+}
+
+/* ---------- predstavitev: besedilo + fotografija ---------- */
+.predstavitev {
+    display: grid;
+    gap: var(--razmik-4);
+    align-items: center;
+}
+
+.predstavitev__slika {
+    margin: 0;
+}
+
+.predstavitev__slika img {
+    width: 100%;
+    border-radius: var(--zaobljenost);
+    box-shadow: var(--senca);
+}
+
+.predstavitev__slika figcaption {
+    margin-top: var(--razmik-2);
+    font-size: 0.9rem;
+    color: var(--barva-besedilo-sibko);
+}
+
+/* ---------- kartice (CSS Grid) ---------- */
+.kartice {
+    display: grid;
+    gap: var(--razmik-4);
+}
+
+.kartica {
+    border-top: 6px solid var(--barva-primarna);
+}
+
+.kartica:nth-child(2) {
+    border-top-color: var(--barva-sekundarna);
+}
+
+.kartica ul {
+    padding-left: var(--razmik-4);
+}
+
+.kartica li + li {
+    margin-top: var(--razmik-2);
+}
+
+/* ---------- odzivnost ---------- */
+@media (min-width: 48em) {
+    .junak {
+        padding-block: var(--razmik-6);
+    }
+
+    .junak h1 {
+        font-size: 3rem;
+    }
+
+    /* besedilo in slika drug ob drugem */
+    .predstavitev {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* dve kartici v vrsti, tretja čez celo širino */
+    .kartice {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .kartica:last-child {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (min-width: 64em) {
+    /* tri kartice v vrsti */
+    .kartice {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .kartica:last-child {
+        grid-column: auto;
+    }
+}

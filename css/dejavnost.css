@@ -1,0 +1,203 @@
+/* ==========================================================
+   Slog samo za dejavnost.html – koraki, seznami, slika + besedilo
+   ========================================================== */
+
+/* ---------- razdelki: naslov z zeleno črto ---------- */
+.sklop > h2,
+.slika-besedilo__besedilo > h2 {
+    padding-bottom: var(--razmik-2);
+    border-bottom: 3px solid var(--barva-primarna-svetla);
+}
+
+/* ---------- oštevilčeni koraki (lasten števec namesto privzetih številk) ---------- */
+.koraki {
+    list-style: none;
+    counter-reset: korak;
+    padding: 0;
+    display: grid;
+    gap: var(--razmik-3);
+}
+
+.koraki li {
+    counter-increment: korak;
+    position: relative;
+    padding: var(--razmik-3) var(--razmik-3) var(--razmik-3) 4rem;
+    background: var(--barva-povrsina);
+    border: 1px solid var(--barva-rob);
+    border-radius: var(--zaobljenost);
+}
+
+.koraki li::before {
+    content: counter(korak);
+    position: absolute;
+    left: var(--razmik-3);
+    top: var(--razmik-3);
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: var(--barva-primarna);
+    color: #ffffff;
+    font-weight: 700;
+    text-align: center;
+    line-height: 2rem;
+}
+
+/* ---------- seznam s kljukicami ---------- */
+.kljukice {
+    list-style: none;
+    padding: 0;
+}
+
+.kljukice li {
+    padding-left: 1.75rem;
+    position: relative;
+}
+
+.kljukice li + li {
+    margin-top: var(--razmik-2);
+}
+
+.kljukice li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--barva-primarna);
+    font-weight: 700;
+}
+
+/* ---------- kombinacija slike in besedila (CSS Grid) ---------- */
+.slika-besedilo {
+    display: grid;
+    gap: var(--razmik-4);
+    align-items: start;
+}
+
+.slika-besedilo__slika {
+    margin: 0;
+}
+
+.slika-besedilo__slika img {
+    width: 100%;
+    border-radius: var(--zaobljenost);
+    box-shadow: var(--senca);
+}
+
+.slika-besedilo__slika figcaption {
+    margin-top: var(--razmik-2);
+    font-size: 0.9rem;
+    color: var(--barva-besedilo-sibko);
+}
+
+/* ---------- kartice terminov (ustvari jih js/termini.js) ---------- */
+.termini {
+    display: grid;
+    gap: var(--razmik-3);
+}
+
+.termin-kartica {
+    display: flex;
+    flex-direction: column;
+    padding: var(--razmik-4);
+    background: var(--barva-povrsina);
+    border: 1px solid var(--barva-rob);
+    border-top: 6px solid var(--barva-primarna);
+    border-radius: var(--zaobljenost);
+    box-shadow: var(--senca);
+}
+
+.termin-kartica h3 {
+    font-size: 1.2rem;
+    margin-bottom: var(--razmik-2);
+}
+
+.termin-kartica__datum {
+    font-weight: 700;
+    margin-bottom: var(--razmik-1);
+}
+
+.termin-kartica__kraj {
+    font-size: 0.9rem;
+    color: var(--barva-besedilo-sibko);
+}
+
+.mesta {
+    margin: auto 0 0;               /* potisne oznako na dno kartice */
+    padding: var(--razmik-1) var(--razmik-3);
+    border-radius: var(--zaobljenost);
+    font-weight: 700;
+    text-align: center;
+}
+
+.mesta--prosto {
+    background: var(--barva-primarna-svetla);
+    color: var(--barva-primarna-temna);
+}
+
+.mesta--zasedeno {
+    background: #fbe3e1;
+    color: #8c1d18;
+}
+
+/* ---------- citat ---------- */
+.citat {
+    margin: var(--razmik-4) 0 0;
+    padding: var(--razmik-4);
+    background: var(--barva-primarna-svetla);
+    border-radius: var(--zaobljenost);
+}
+
+.citat blockquote {
+    margin: 0;
+    font-family: var(--pisava-naslovi);
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--barva-primarna-temna);
+}
+
+.citat blockquote p {
+    margin: 0;
+}
+
+.citat blockquote p::before { content: "»"; }
+.citat blockquote p::after  { content: "«"; }
+
+.citat figcaption {
+    margin-top: var(--razmik-2);
+    color: var(--barva-besedilo-sibko);
+}
+
+/* ---------- seznam zunanjih povezav ---------- */
+.povezave {
+    padding-left: var(--razmik-4);
+}
+
+.povezave li + li {
+    margin-top: var(--razmik-2);
+}
+
+/* ---------- odzivnost ---------- */
+@media (min-width: 48em) {
+    /* koraki v dveh stolpcih */
+    .koraki {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* slika levo, besedilo desno */
+    .slika-besedilo {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .termini {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 64em) {
+    .koraki {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .termini {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

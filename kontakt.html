@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kontaktni podatki Centra ponovne uporabe in obrazec za vprašanja o oddaji, nakupu, popravljalnici Repair Café in sodelovanju.">
+    <meta name="author" content="Jan Žnidarič">
+    <title>Kontakt | Center ponovne uporabe (CPU)</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/kontakt.css">
+</head>
+<body>
+    <a class="preskok" href="#vsebina">Preskoči na vsebino</a>
+
+    <header class="glava">
+        <div class="vsebnik">
+            <p class="logotip"><a href="index.html">Center ponovne uporabe</a></p>
+            <nav class="navigacija" aria-label="Glavna navigacija">
+                <ul>
+                    <li><a href="index.html">Predstavitev</a></li>
+                    <li><a href="dejavnost.html">Dejavnost</a></li>
+                    <li><a href="informacije.html">Praktične informacije</a></li>
+                    <li><a href="kontakt.html" aria-current="page">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="vsebina" class="vsebnik vsebina">
+        <h1>Kontakt</h1>
+
+        <div class="kontakt-postavitev">
+            <section id="podatki" class="kartica kontakt-podatki">
+                <h2>Kontaktni podatki</h2>
+                <address>
+                    <strong>CPU d.o.o., so.p.</strong> (sedež podjetja)<br>
+                    Vrazova 9<br>
+                    2270 Ormož<br>
+                    Telefon: <a href="tel:+38631706482">031 706 482</a><br>
+                    E-pošta: <a href="mailto:ormoz@cpu-reuse.com">ormoz@cpu-reuse.com</a><br>
+                    Splet: <a href="https://www.cpu-reuse.com/">www.cpu-reuse.com</a>
+                </address>
+                <p>
+                    Telefonske številke posameznih centrov so v tabeli na strani
+                    <a href="informacije.html#enote">Praktične informacije</a>.
+                </p>
+            </section>
+
+            <section id="obrazec" class="obrazec-sklop">
+                <h2>Pošlji nam sporočilo</h2>
+                <p>Polja, označena z zvezdico (*), so obvezna.</p>
+
+                <!-- Strežnika ni: action kaže na stran, ki bi jo v pravi rešitvi zamenjal strežniški skript. -->
+                <form class="obrazec" action="kontakt.html" method="post">
+                    <fieldset>
+                        <legend>Tvoji podatki</legend>
+                        <div class="polje">
+                            <label for="ime">Ime in priimek *</label>
+                            <input type="text" id="ime" name="ime" required minlength="2" maxlength="80" autocomplete="name">
+                        </div>
+                        <div class="polje">
+                            <label for="email">E-poštni naslov *</label>
+                            <input type="email" id="email" name="email" required maxlength="120" autocomplete="email" placeholder="ime@primer.si">
+                        </div>
+                        <div class="polje">
+                            <label for="telefon">Telefon (neobvezno)</label>
+                            <input type="tel" id="telefon" name="telefon" pattern="[0-9+ ]{9,15}" title="Vnesi od 9 do 15 števk; dovoljena sta tudi presledek in znak +." autocomplete="tel">
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Razlog za stik *</legend>
+                        <div class="izbira">
+                            <input type="radio" id="razlog-oddaja" name="razlog" value="oddaja" required>
+                            <label for="razlog-oddaja">Oddaja izdelka</label>
+                        </div>
+                        <div class="izbira">
+                            <input type="radio" id="razlog-nakup" name="razlog" value="nakup">
+                            <label for="razlog-nakup">Nakup ali naročilo izdelka</label>
+                        </div>
+                        <div class="izbira">
+                            <input type="radio" id="razlog-popravilo" name="razlog" value="repair-cafe">
+                            <label for="razlog-popravilo">Popravljalnica Repair Café</label>
+                        </div>
+                        <div class="izbira">
+                            <input type="radio" id="razlog-sodelovanje" name="razlog" value="sodelovanje">
+                            <label for="razlog-sodelovanje">Sodelovanje (šola, podjetje, prostovoljstvo)</label>
+                        </div>
+                        <div class="izbira">
+                            <input type="radio" id="razlog-drugo" name="razlog" value="drugo">
+                            <label for="razlog-drugo">Drugo</label>
+                        </div>
+                        <div class="polje">
+                            <label for="center">Na kateri center se sporočilo nanaša?</label>
+                            <select id="center" name="center">
+                                <option value="">Ni pomembno</option>
+                                <option value="ljubljana">CPU Ljubljana</option>
+                                <option value="ormoz">CPU Ormož</option>
+                                <option value="rogaska-slatina">CPU Rogaška Slatina</option>
+                                <option value="slovenske-konjice">CPU Slovenske Konjice</option>
+                            </select>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Sporočilo</legend>
+                        <div class="polje">
+                            <label for="sporocilo">Tvoje sporočilo *</label>
+                            <textarea id="sporocilo" name="sporocilo" rows="6" required minlength="10" maxlength="1000"></textarea>
+                        </div>
+                        <div class="izbira">
+                            <input type="checkbox" id="soglasje" name="soglasje" value="da" required>
+                            <label for="soglasje">Strinjam se, da se moji podatki uporabijo samo za odgovor na to sporočilo. *</label>
+                        </div>
+                    </fieldset>
+
+                    <div class="obrazec__gumbi">
+                        <button class="gumb" type="submit">Pošlji sporočilo</button>
+                        <button class="gumb gumb--sekundarni" type="reset">Počisti obrazec</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <footer class="noga">
+        <div class="vsebnik">
+            <img src="slike/locilo.svg" alt="" width="240" height="24">
+            <p>
+                Šolski projekt za predmet RMA, izdelal Jan Žnidarič, 2026. Podatki so povzeti po uradni spletni strani
+                <a href="https://www.cpu-reuse.com/">cpu-reuse.com</a>.
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

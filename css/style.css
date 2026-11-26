@@ -1,0 +1,290 @@
+/* ==========================================================
+   Skupni slog za vse štiri strani – Center ponovne uporabe
+   Pristop: mobile-first (najprej ozek zaslon, nato media queries)
+   ========================================================== */
+
+/* ---------- 1. Spremenljivke (barve, razmiki, pisava) ---------- */
+:root {
+    /* barvna paleta */
+    --barva-primarna: #2f6b3a;        /* zelena – reciklaža, narava */
+    --barva-primarna-temna: #1f4a28;
+    --barva-primarna-svetla: #e3efe2;
+    --barva-sekundarna: #e9a23b;      /* topla oranžna – poziv k dejanju, poudarki */
+    --barva-sekundarna-svetla: #fdf1dc;
+    --barva-besedilo: #1f2421;        /* nevtralna temna */
+    --barva-besedilo-sibko: #505a53;
+    --barva-ozadje: #f7f6f1;          /* nevtralna svetla */
+    --barva-povrsina: #ffffff;
+    --barva-rob: #d6d8cf;
+    --barva-fokus: #1a5fb4;
+
+    /* sistem razmikov (vsak korak je približno dvakrat večji) */
+    --razmik-1: 0.25rem;
+    --razmik-2: 0.5rem;
+    --razmik-3: 1rem;
+    --razmik-4: 1.5rem;
+    --razmik-5: 2.5rem;
+    --razmik-6: 4rem;
+
+    /* tipografija */
+    --pisava: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --pisava-naslovi: Georgia, "Times New Roman", serif;
+
+    /* ostalo */
+    --sirina-vsebine: 70rem;
+    --zaobljenost: 0.5rem;
+    --senca: 0 2px 8px rgba(31, 36, 33, 0.08);
+}
+
+/* ---------- 2. Osnova ---------- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: var(--pisava);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--barva-besedilo);
+    background-color: var(--barva-ozadje);
+}
+
+img {
+    max-width: 100%;   /* slika nikoli ni širša od svojega vsebnika */
+    height: auto;
+    display: block;
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--pisava-naslovi);
+    line-height: 1.2;
+    color: var(--barva-primarna-temna);
+    margin: 0 0 var(--razmik-3);
+}
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; }
+
+p,
+ul,
+ol {
+    margin: 0 0 var(--razmik-3);
+}
+
+a {
+    color: var(--barva-primarna);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+}
+
+a:hover {
+    color: var(--barva-primarna-temna);
+}
+
+/* jasno vidno stanje fokusa za vse, ki uporabljajo tipkovnico */
+:focus-visible {
+    outline: 3px solid var(--barva-fokus);
+    outline-offset: 3px;
+}
+
+/* ---------- 3. Pomožni razredi ---------- */
+.vsebnik {
+    width: 100%;
+    max-width: var(--sirina-vsebine);
+    margin-inline: auto;
+    padding-inline: var(--razmik-3);
+}
+
+/* povezava za preskok navigacije – vidna samo, ko dobi fokus */
+.preskok {
+    position: absolute;
+    left: var(--razmik-3);
+    top: -3rem;
+    padding: var(--razmik-2) var(--razmik-3);
+    background: var(--barva-sekundarna);
+    color: var(--barva-besedilo);
+    font-weight: 700;
+    z-index: 10;
+}
+
+.preskok:focus {
+    top: var(--razmik-2);
+}
+
+.gumb {
+    display: inline-block;
+    padding: var(--razmik-2) var(--razmik-4);
+    border: 2px solid var(--barva-sekundarna);
+    border-radius: var(--zaobljenost);
+    background: var(--barva-sekundarna);
+    color: var(--barva-besedilo);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.gumb:hover {
+    background: #f3b55a;
+    color: var(--barva-besedilo);
+}
+
+.gumb--obroba {
+    background: transparent;
+    color: inherit;
+}
+
+.gumb--obroba:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: inherit;
+}
+
+.kartica {
+    background: var(--barva-povrsina);
+    border: 1px solid var(--barva-rob);
+    border-radius: var(--zaobljenost);
+    padding: var(--razmik-4);
+    box-shadow: var(--senca);
+}
+
+.poudarek {
+    background: var(--barva-sekundarna-svetla);
+    border-left: 6px solid var(--barva-sekundarna);
+    border-radius: var(--zaobljenost);
+    padding: var(--razmik-3) var(--razmik-4);
+}
+
+/* ---------- 4. Glava in navigacija (Flexbox) ---------- */
+.glava {
+    background: var(--barva-primarna);
+    color: #ffffff;
+}
+
+.glava .vsebnik {
+    display: flex;
+    flex-direction: column;       /* na telefonu: logotip nad menijem */
+    gap: var(--razmik-2);
+    padding-block: var(--razmik-3);
+}
+
+.logotip {
+    margin: 0;
+    font-family: var(--pisava-naslovi);
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.logotip a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.navigacija ul {
+    display: flex;
+    flex-wrap: wrap;              /* brez JavaScripta: povezave se prelomijo v več vrstic */
+    gap: var(--razmik-2);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navigacija li {
+    flex: 1 1 40%;                /* na telefonu dve povezavi v vrsti */
+}
+
+.navigacija a {
+    display: block;
+    padding: var(--razmik-2) var(--razmik-3);
+    border-radius: var(--zaobljenost);
+    background: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.navigacija a:hover {
+    background: rgba(255, 255, 255, 0.22);
+}
+
+.navigacija a[aria-current="page"] {
+    background: var(--barva-sekundarna);
+    color: var(--barva-besedilo);
+}
+
+/* ---------- 5. Glavna vsebina ---------- */
+.vsebina {
+    padding-block: var(--razmik-5);
+}
+
+.vsebina > h1 {
+    margin-bottom: var(--razmik-4);
+}
+
+.uvod {
+    font-size: 1.125rem;
+    color: var(--barva-besedilo-sibko);
+    max-width: 45rem;
+}
+
+.sklop {
+    margin-bottom: var(--razmik-5);
+}
+
+/* ---------- 6. Noga ---------- */
+.noga {
+    background: var(--barva-primarna-temna);
+    color: #e8eee8;
+    padding-block: var(--razmik-4);
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.noga img {
+    margin: 0 auto var(--razmik-3);
+    opacity: 0.6;
+}
+
+.noga a {
+    color: #ffffff;
+}
+
+/* ---------- 7. Odzivnost ---------- */
+
+/* tablica in več (približno 768 px) */
+@media (min-width: 48em) {
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 1.75rem; }
+
+    .vsebnik {
+        padding-inline: var(--razmik-4);
+    }
+
+    .navigacija li {
+        flex: 0 0 auto;               /* povezave v eni vrsti */
+    }
+}
+
+/* velik zaslon (približno 1024 px in več) */
+@media (min-width: 64em) {
+    body {
+        font-size: 1.0625rem;
+    }
+
+    .glava .vsebnik {
+        flex-direction: row;          /* logotip levo, meni desno */
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .vsebina {
+        padding-block: var(--razmik-6);
+    }
+}

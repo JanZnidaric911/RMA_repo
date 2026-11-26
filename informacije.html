@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Naslovi, delovni čas in telefonske številke centrov ponovne uporabe v Ljubljani, Ormožu, Rogaški Slatini in Slovenskih Konjicah.">
+    <meta name="author" content="Jan Žnidarič">
+    <title>Praktične informacije | Center ponovne uporabe (CPU)</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/informacije.css">
+    <script src="js/kalkulator.js" defer></script>
+</head>
+<body>
+    <a class="preskok" href="#vsebina">Preskoči na vsebino</a>
+
+    <header class="glava">
+        <div class="vsebnik">
+            <p class="logotip"><a href="index.html">Center ponovne uporabe</a></p>
+            <nav class="navigacija" aria-label="Glavna navigacija">
+                <ul>
+                    <li><a href="index.html">Predstavitev</a></li>
+                    <li><a href="dejavnost.html">Dejavnost</a></li>
+                    <li><a href="informacije.html" aria-current="page">Praktične informacije</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="vsebina" class="vsebnik vsebina">
+        <h1>Praktične informacije</h1>
+        <p class="uvod">
+            Na tej strani so zbrani naslovi in delovni čas vseh centrov ponovne uporabe ter navodila,
+            kako izdelek oddati ali kupiti.
+        </p>
+
+        <section id="enote" class="sklop">
+            <h2>Centri in delovni čas</h2>
+            <!-- ovoj omogoča vodoravno drsenje tabele na ozkem zaslonu, stran sama pa se ne premika -->
+            <div class="tabela-ovoj" role="region" aria-labelledby="napis-tabele" tabindex="0">
+                <table class="tabela">
+                    <caption id="napis-tabele">Delovni čas centrov ponovne uporabe (stanje novembra 2026)</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Center</th>
+                            <th scope="col">Naslov</th>
+                            <th scope="col">Ponedeljek–petek</th>
+                            <th scope="col">Sobota</th>
+                            <th scope="col">Telefon</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">CPU Ljubljana</th>
+                            <td>Štula 10, 1000 Ljubljana-Šentvid</td>
+                            <td>torek–petek: 9.00–17.00 <span class="oznaka">ob ponedeljkih zaprto</span></td>
+                            <td>9.00–17.00</td>
+                            <td><a href="tel:+38651222019">051 222 019</a></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">CPU Ormož</th>
+                            <td>Vrazova 9, 2270 Ormož</td>
+                            <td>7.00–15.00</td>
+                            <td>po dogovoru</td>
+                            <td><a href="tel:+38631689920">031 689 920</a></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">CPU Rogaška Slatina</th>
+                            <td>Tuncovec 10H (zbirni center OKP), 3250 Rogaška Slatina</td>
+                            <td>8.00–16.00</td>
+                            <td>8.00–12.30</td>
+                            <td><a href="tel:+38638103109">03 810 31 09</a></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">CPU Slovenske Konjice</th>
+                            <td>Tattenbachova 5d, 3210 Slovenske Konjice</td>
+                            <td>8.00–17.00</td>
+                            <td><span class="oznaka">zaprto</span></td>
+                            <td><a href="tel:+38631608556">031 608 556</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="namig">Na ozkem zaslonu tabelo povleci levo ali desno.</p>
+            <p class="poudarek"><strong>Ob nedeljah so vsi centri zaprti.</strong></p>
+        </section>
+
+        <section id="repair-cafe-termini" class="sklop">
+            <h2>Termini popravljalnice Repair Café</h2>
+            <div class="termin">
+                <p class="termin__kdaj">vsak <strong>zadnji petek</strong> v mesecu</p>
+                <p class="termin__kje">CPU Slovenske Konjice, Tattenbachova 5d</p>
+            </div>
+            <p>
+                Ker se termini lahko spremenijo, pred obiskom pokliči center ali preveri
+                obvestila na njihovi <a href="https://www.facebook.com/CenterPonovneUporabe">strani na Facebooku</a>.
+            </p>
+        </section>
+
+        <section id="kalkulator-prihranka" class="sklop kartica">
+            <h2>Koliko prihraniš z rabljenim izdelkom?</h2>
+            <p>Vpiši ceno novega izdelka v trgovini in ceno enakega rabljenega izdelka v CPU.</p>
+            <form class="kalkulator" id="kalkulator">
+                <div class="kalkulator__polja">
+                    <div class="polje">
+                        <label for="cena-nov">Cena novega izdelka (€)</label>
+                        <input type="number" id="cena-nov" name="cena-nov" min="0.01" step="0.01" required inputmode="decimal" placeholder="npr. 120">
+                    </div>
+                    <div class="polje">
+                        <label for="cena-rabljen">Cena rabljenega izdelka v CPU (€)</label>
+                        <input type="number" id="cena-rabljen" name="cena-rabljen" min="0" step="0.01" required inputmode="decimal" placeholder="npr. 35">
+                    </div>
+                </div>
+                <div class="kalkulator__gumbi">
+                    <button class="gumb" type="submit">Izračunaj</button>
+                    <button class="gumb gumb--sekundarni" type="reset">Počisti</button>
+                </div>
+                <!-- rezultat vpiše js/kalkulator.js; aria-live poskrbi, da ga bralnik zaslona prebere -->
+                <output class="rezultat" id="rezultat" for="cena-nov cena-rabljen" aria-live="polite"></output>
+            </form>
+        </section>
+
+        <div class="dva-stolpca">
+            <section id="oddaja" class="kartica">
+                <h2>Kako oddati izdelek</h2>
+                <ol>
+                    <li>Preveri, ali je izdelek čist, cel in še uporaben.</li>
+                    <li>V delovnem času ga prinesi v najbližji center (glej tabelo zgoraj).</li>
+                    <li>Pri večjih kosih, kot je pohištvo, center prej pokliči in se dogovori za oddajo.</li>
+                </ol>
+            </section>
+
+            <section id="nakup" class="kartica">
+                <h2>Kako kupiti izdelek</h2>
+                <p>
+                    Rabljeni izdelki so naprodaj v zelenih trgovinah ob centrih v Ormožu, Rogaški Slatini in Slovenskih
+                    Konjicah. Unikatne izdelke iz predelanih materialov (torbe, nahrbtnike, nakit) lahko kupiš tudi v
+                    <a href="https://www.cpu-reuse.com/trgovina">spletni trgovini CPU</a>.
+                </p>
+                <p>
+                    Center v Ljubljani deluje kot vstopna točka: izdelke sprejme in jih preusmeri v druge enote, kjer jih
+                    obnovijo in prodajo.
+                </p>
+            </section>
+        </div>
+    </main>
+
+    <footer class="noga">
+        <div class="vsebnik">
+            <img src="slike/locilo.svg" alt="" width="240" height="24">
+            <p>
+                Šolski projekt za predmet RMA, izdelal Jan Žnidarič, 2026. Podatki so povzeti po uradni spletni strani
+                <a href="https://www.cpu-reuse.com/">cpu-reuse.com</a>.
+            </p>
+        </div>
+    </footer>
+</body>
+</html>

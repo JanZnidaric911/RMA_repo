@@ -1,0 +1,210 @@
+/* ==========================================================
+   Slog samo za informacije.html – tabela, termin, dva stolpca
+   ========================================================== */
+
+/* ---------- drsni vsebnik za tabelo ---------- */
+.tabela-ovoj {
+    overflow-x: auto;              /* drsi samo tabela, ne cela stran */
+    background: var(--barva-povrsina);
+    border: 1px solid var(--barva-rob);
+    border-radius: var(--zaobljenost);
+    box-shadow: var(--senca);
+}
+
+/* ---------- tabela ---------- */
+.tabela {
+    width: 100%;
+    min-width: 40rem;              /* pod to širino se pojavi drsnik */
+    border-collapse: collapse;
+}
+
+.tabela caption {
+    position: sticky;              /* napis ostane viden, ko tabelo povlečeš vstran */
+    left: 0;
+    max-width: calc(100vw - 2rem);
+    padding: var(--razmik-3);
+    font-weight: 700;
+    text-align: left;
+    color: var(--barva-primarna-temna);
+}
+
+.tabela th,
+.tabela td {
+    padding: var(--razmik-2) var(--razmik-3);
+    text-align: left;
+    vertical-align: top;
+    border-top: 1px solid var(--barva-rob);
+}
+
+/* glava stolpcev: temno ozadje, jasno ločena od podatkov */
+.tabela thead th {
+    background: var(--barva-primarna);
+    color: #ffffff;
+    border-top: none;
+    white-space: nowrap;
+}
+
+/* glava vrstice (ime centra) */
+.tabela tbody th {
+    color: var(--barva-primarna-temna);
+    white-space: nowrap;
+}
+
+/* izmenično obarvane vrstice za lažje branje */
+.tabela tbody tr:nth-child(even) {
+    background: var(--barva-ozadje);
+}
+
+.tabela tbody tr:hover {
+    background: var(--barva-primarna-svetla);
+}
+
+.tabela a {
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* opozorilo v celici, npr. »zaprto« */
+.oznaka {
+    display: inline-block;
+    padding: 0 var(--razmik-2);
+    border-radius: var(--zaobljenost);
+    background: var(--barva-sekundarna-svetla);
+    border: 1px solid var(--barva-sekundarna);
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.namig {
+    margin-top: var(--razmik-2);
+    font-size: 0.9rem;
+    color: var(--barva-besedilo-sibko);
+}
+
+/* ---------- izstopajoč termin Repair Café ---------- */
+.termin {
+    display: flex;
+    flex-direction: column;
+    gap: var(--razmik-1);
+    margin-bottom: var(--razmik-3);
+    padding: var(--razmik-4);
+    border-radius: var(--zaobljenost);
+    background: var(--barva-primarna);
+    color: #ffffff;
+}
+
+.termin p {
+    margin: 0;
+}
+
+.termin__kdaj {
+    font-family: var(--pisava-naslovi);
+    font-size: 1.5rem;
+}
+
+.termin__kdaj strong {
+    color: var(--barva-sekundarna);
+}
+
+/* ---------- kalkulator prihranka ---------- */
+.kalkulator__polja {
+    display: grid;
+    gap: var(--razmik-3);
+    margin-bottom: var(--razmik-3);
+}
+
+.polje {
+    display: flex;
+    flex-direction: column;
+    gap: var(--razmik-1);
+}
+
+.polje label {
+    font-weight: 600;
+}
+
+.polje input {
+    width: 100%;
+    padding: var(--razmik-2) var(--razmik-3);
+    border: 2px solid var(--barva-rob);
+    border-radius: var(--zaobljenost);
+    font: inherit;
+}
+
+.polje input:focus {
+    outline: 3px solid var(--barva-fokus);
+    outline-offset: 1px;
+    border-color: var(--barva-fokus);
+}
+
+.kalkulator__gumbi {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--razmik-3);
+}
+
+.kalkulator button {
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.gumb--sekundarni {
+    background: transparent;
+    border-color: var(--barva-rob);
+}
+
+.rezultat {
+    display: block;
+    margin-top: var(--razmik-3);
+}
+
+.rezultat--uspeh,
+.rezultat--napaka {
+    padding: var(--razmik-3);
+    border-radius: var(--zaobljenost);
+    font-weight: 700;
+}
+
+.rezultat--uspeh {
+    background: var(--barva-primarna-svetla);
+    color: var(--barva-primarna-temna);
+    font-size: 1.15rem;
+}
+
+.rezultat--napaka {
+    background: #fbe3e1;
+    color: #8c1d18;
+}
+
+/* ---------- oddaja in nakup ---------- */
+.dva-stolpca {
+    display: grid;
+    gap: var(--razmik-4);
+}
+
+.dva-stolpca ol {
+    padding-left: var(--razmik-4);
+}
+
+.dva-stolpca li + li {
+    margin-top: var(--razmik-2);
+}
+
+/* ---------- odzivnost ---------- */
+@media (min-width: 48em) {
+    .namig {
+        display: none;             /* tabela je dovolj široka, namig ni potreben */
+    }
+
+    .dva-stolpca,
+    .kalkulator__polja {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .termin {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
